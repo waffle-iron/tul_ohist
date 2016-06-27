@@ -183,7 +183,7 @@ module TulOhistHelper
     output = ''
     config = YAML.load_file(File.expand_path("#{Rails.root}/config/contentdm.yml", __FILE__))
     model = model_from_document(document)
-    ensemble_identifier = document[:ensemble_identifier_tesim]
+    ensemble_identifier = document[:ensemble_identifier_tesim].first
     width = "380"
     height = "36"
     frame_width = 400
@@ -221,6 +221,7 @@ module TulOhistHelper
                           class: "ensembleEmbeddedContent",
                           id: "ensembleEmbeddedContent_#{ensemble_identifier}",
                           style: ["width: #{width}px;", "height: #{height}px;"])
+                          
 
     output.html_safe
   end
